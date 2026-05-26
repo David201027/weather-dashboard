@@ -94,6 +94,13 @@ button:hover {
   z-index: 100;
 }
 
+.error{
+  color: red;
+  font-size: 12px;
+  margin-top: -20px;
+  margin-bottom: 15px;
+}
+
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -228,7 +235,7 @@ span {
 }
 
 .favorite {
-  border: 3px solid red;
+  outline: 3px solid red;
 }
 
 /* TOP */
@@ -629,7 +636,7 @@ span {
 .slider {
   position: relative;
   width: 942px;
-  height: 211px;
+  height: 260px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -678,7 +685,9 @@ span {
   opacity: 1;
   z-index: 3;
 }
-
+.nature-1{
+  max-height: 211px;
+}
 .footer {
   padding: 40px 0 64px 0;
   background: #ffb36c;
@@ -717,4 +726,143 @@ span {
   align-items: center;
   gap: 20px;
   cursor: pointer;
+}
+
+.forecast-toggle-btn{
+  background: #ffb36c;
+  border-radius: 10px;
+  padding: 8px 18px;
+  width: 114px;
+  height: 28px;
+  border: none;
+  font-weight: 500;
+  font-size: 10px;
+  margin-bottom: 15px;
+}
+
+.forecast-section {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.6s ease;
+}
+
+.forecast-section > div {
+  overflow: hidden;
+}
+
+.forecast-section.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.weekly-section {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.6s ease;
+}
+
+.weekly-section > div {
+  overflow: hidden;
+}
+
+.weekly-section.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Стили для контейнера стрелок и слайдера */
+.slider-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Общие стили для стрелок */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10; /* Стрелки должны быть поверх слайдов */
+}
+
+.slider-arrow:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Позиционирование стрелок по краям контейнера */
+.left-arrow {
+  left: 20px;
+}
+
+.right-arrow {
+  right: 20px;
+}
+
+/* Адаптив под мобилки (чтобы стрелки не перекрывали контент на маленьких экранах) */
+@media (max-width: 768px) {
+  .slider-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+  .left-arrow { left: 5px; }
+  .right-arrow { right: 5px; }
+}
+
+
+
+/* Убедись, что у твоего класса modal-content есть relative */
+.modal-content {
+  position: relative; /* Чтобы абсолютный крестик позиционировался от этого окна */
+  /* Твои остальные стили для modal-content (background, padding и т.д.) */
+}
+
+/* Стили для самого крестика */
+.close-modal-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 30px;
+  line-height: 1;
+  color: #aaa;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Анимация и цвет при наведении */
+.close-modal-btn:hover {
+  color: #e74c3c; /* Становится красивым красным при наведении */
+  transform: scale(1.1);
+}
+
+.close-modal-btn:active {
+  transform: scale(0.95);
 }
